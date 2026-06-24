@@ -25,6 +25,7 @@ const Country = ({ country }) => {
 const App = () => {
   const [countries, setCountries] = useState([])
   const [query, setQuery] = useState('')
+  const [selected, setSelected] = useState(null)
 
   useEffect(() => {
     axios
@@ -36,6 +37,7 @@ const App = () => {
 
   const handleQueryChange = (event) => {
     setQuery(event.target.value)
+    setSelected(null)
   }
 
   const matches = query === ''
@@ -47,6 +49,9 @@ const App = () => {
   const renderResult = () => {
     if (query === '') {
       return null
+    }
+    if (selected) {
+      return <Country country={selected} />
     }
     if (matches.length > 10) {
       return <p>Too many matches, specify another filter</p>
@@ -60,7 +65,10 @@ const App = () => {
     return (
       <div>
         {matches.map(country =>
-          <p key={country.name.common}>{country.name.common}</p>
+          <div key={country.name.common}>
+            {country.name.common}
+            <button onClick={() => setSelected(country)}>show</button>
+          </div>
         )}
       </div>
     )
