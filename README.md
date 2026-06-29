@@ -2,10 +2,18 @@
 
 My solutions for the Full Stack Open course.
 
-## Phonebook backend (part 3)
+## Part 3 — Phonebook backend
 
-Backend for the phonebook application.
+Backend (Node + Express) for the phonebook application, serving the React frontend from part 2.
 
 ### Live app
 
-https://fullstackopen-yj9b.onrender.com/api/persons
+https://fullstackopen-yj9b.onrender.com
+
+### API
+
+- `GET /api/persons` — all entries
+- `GET /api/persons/:id` — a single entry
+- `GET /info` — info page
+- `POST /api/persons` — add an entry
+- `DELETE /api/persons/:id` — remove an entry
